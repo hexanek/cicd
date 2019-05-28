@@ -3,18 +3,18 @@ jobs:
   superbuild:
     working_directory: ~/cicd
     docker:
-      - image: circleci/openjdk:8u171-jdk
+    - image: circleci/openjdk:8u171-jdk
     steps:
-      - checkout
-      - run: mvn dependency:go-offline
-      - run: mvn test
+    - checkout
+    - run: mvn dependency:go-offline
+    - run: mvn test
   superdeploy:
     docker: buildpack-deps:trusty
     steps:
-      - checkout
-      - run:
-          name: Deploying app on heroku
-          command: |
+    - checkout
+    - run:
+        name: Deploying app on heroku
+        command: |
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
 workflows:
   version: 2
