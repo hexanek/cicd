@@ -16,11 +16,6 @@ public class HomeController
         this.dogRepository = dogRepository;
     }
 
-    @GetMapping
-    public String hello()
-    {
-        return "Hello world!";
-    }
 
 
     @PostMapping
